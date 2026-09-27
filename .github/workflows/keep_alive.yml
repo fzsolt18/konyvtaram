@@ -1,0 +1,16 @@
+YAML
+name: Keep Streamlit App Alive
+
+on:
+  schedule:
+    # Minden 2. óra 0. percében lefut (UTC idő szerint)
+    - cron: '0 */2 * * *'
+  workflow_dispatch: # Manuális indítási lehetőség a GitHub Actions fülről teszteléshez
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Streamlit App
+        run: |
+          curl -sL "https://konyvtaram.streamlit.app/" > /dev/null
